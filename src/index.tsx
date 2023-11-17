@@ -4,15 +4,13 @@ import App from './App';
 
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
-import { Translation } from 'react-i18next';
-
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Translation>{(t) => <App t={t} />}</Translation>
+     <App/>
   </React.StrictMode>
 );
 

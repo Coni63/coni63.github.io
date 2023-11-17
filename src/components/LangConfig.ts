@@ -1,22 +1,27 @@
 import { initReactI18next } from "react-i18next";
 import i18n from "i18next";
 
-i18n.use(initReactI18next).init({
-  lng: "",
-  resources: {
-    en: {
-      translation: {
-        Hi: "Hi",
-        Actions: "Actions"
-      }
+const resources = {
+  en: {
+    common: {
     },
-    fr: {
-      translation: {
-        Hi: "Bonjour",
-        Actions: "Clique ici"
-      }
-    },
+    aboutme: {
+      Position: "Data Scientist & Python Developer",
+    }
   },
+  fr: {
+    common: {
+    },
+    aboutme: {
+      Position: "Data Scientist & Développeur Python",
+    }
+  },
+};
+
+
+i18n.use(initReactI18next).init({
+  lng: localStorage.getItem("lang") || "en",
+  resources: resources,
   keySeparator: false,
   interpolation: { escapeValue: false }
 });

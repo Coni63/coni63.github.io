@@ -2,17 +2,13 @@ import './App.scss';
 
 import React from "react";
 
-import AboutMe from './components/about_me/AboutMe';
+import {AboutMe} from './components/about_me/AboutMe';
 import fr_flag from './assets/france.png';
 import en_flag from './assets/royaume-uni.png';
 import i18n from "./components/LangConfig";
-import { TFunction } from 'i18next/typescript/t';
 
-interface AppProps {
-  t: TFunction;
-}
 
-export default class App extends React.Component<AppProps> {
+export default class App extends React.Component {
   state = {
     lang: "en"
   };
