@@ -3,9 +3,11 @@ import './App.scss';
 import React from "react";
 
 import {AboutMe} from './components/about_me/AboutMe';
+
 import fr_flag from './assets/france.png';
 import en_flag from './assets/royaume-uni.png';
 import i18n from "./components/LangConfig";
+import {Skills} from './components/skills/Skills';
 
 
 export default class App extends React.Component {
@@ -32,11 +34,11 @@ export default class App extends React.Component {
           <img src={en_flag} alt="english" lang="en" onClick={this.langChange}></img>
         </div>
         <div id="App">
-          <div className="Section">
+          {/* <div className="Section">
             <AboutMe/>
-          </div>
+          </div> */}
           <div className="Section">
-            <AboutMe/>
+            <Skills/>
           </div>
         </div>
       </>
