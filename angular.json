@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/coni63",
+            "outputPath": "docs",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -36,10 +36,9 @@
             ],
             "scripts": [],
             "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            "prerender": false,
+            "ssr": false,
+            "baseHref": "/coni63"
           },
           "configurations": {
             "production": {
@@ -103,5 +102,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "ee19e1ef-aa97-4f3c-93b3-2569343d75b8"
   }
 }
