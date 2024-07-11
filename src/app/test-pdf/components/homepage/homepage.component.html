@@ -1,0 +1,20 @@
+<div id="main-container">
+    <div id="pdf-preview">
+        <pdf-viewer [src]="pdfSrc"
+                    [page]="current_page"
+                    [render-text]="true"
+                    [original-size]="false"
+                    [show-all]="false"
+                    style="width: 100%; height: 100%"></pdf-viewer>
+    </div>
+    <div id="data-panel">
+        @for (item of data; track item) {
+            <app-single-data [item]="item" (pageChangeEvent)="update_page($event)" (saveCorrectedItem)="editItem($event)"></app-single-data>
+        }
+    </div>
+</div>
+
+
+
+
+
