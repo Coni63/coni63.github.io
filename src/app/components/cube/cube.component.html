@@ -1,0 +1,11 @@
+<ngt-mesh #mesh
+    [position]="position()"
+    [scale]="clicked() ? 1.5 : 1"
+    (click)="clicked.set(!clicked())"
+    (pointerover)="hovered.set(true)"
+    (pointerout)="hovered.set(false)"
+    (beforeRender)="onBeforeRender($any($event).object)"
+    >
+    <ngt-box-geometry />
+    <ngt-mesh-standard-material [color]="hovered() ? 'darkred' : 'orange'" />
+</ngt-mesh>
