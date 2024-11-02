@@ -1,6 +1,6 @@
 <ngt-mesh #mesh
     [position]="position()"
-    [scale]="clicked() ? 1.5 : 1"
+    [scale]="clicked() ? 1 : 0.5"
     (click)="clicked.set(!clicked())"
     (pointerover)="hovered.set(true)"
     (pointerout)="hovered.set(false)"

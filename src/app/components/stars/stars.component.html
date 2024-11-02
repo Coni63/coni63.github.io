@@ -1,0 +1,7 @@
+<ngt-group [rotation]="[0, 0, Math.PI / 4]">
+    <ngts-points-buffer [positions]="position()" [stride]="3" [options]="{ frustumCulled: false }" #stars>
+       <ngts-point-material
+          [options]="{ transparent: true, color: '#ccc', size: 0.005, sizeAttenuation: true, depthWrite: false }"
+       />
+    </ngts-points-buffer>
+ </ngt-group>
