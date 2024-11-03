@@ -1,22 +1,10 @@
-import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, signal, viewChild, ViewChild } from '@angular/core';
-import { injectBeforeRender, injectStore, NgtVector3 } from 'angular-three';
-// import { NgtsPointMaterial } from 'angular-three-soba/materials';
-// import { NgtsPointsBuffer } from 'angular-three-soba/performances';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, input, viewChild } from '@angular/core';
 import { random } from 'maath';
-// import { CubeComponent } from '../cube/cube.component';
 
-import { AmbientLight, BoxGeometry, Mesh, MeshStandardMaterial, PointLight, SpotLight } from 'three';
-import { extend, NgtArgs } from 'angular-three';
-import { OrbitControls } from 'three-stdlib';
+import { NgtVector3, injectBeforeRender } from 'angular-three';
+
 import { NgtsPointsBuffer } from 'angular-three-soba/performances';
-
-import { CubeComponent } from '../cube/cube.component';
 import { NgtsPointMaterial } from 'angular-three-soba/materials';
-
-
-extend({ Mesh, MeshStandardMaterial, BoxGeometry, AmbientLight, PointLight, SpotLight });
-// extend({ OrbitControls });
-// extend({ NgtsPointsBuffer });
 
 @Component({
    selector: 'app-stars',
@@ -26,17 +14,12 @@ extend({ Mesh, MeshStandardMaterial, BoxGeometry, AmbientLight, PointLight, Spot
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    changeDetection: ChangeDetectionStrategy.OnPush,
    imports: [
-      NgtsPointsBuffer, NgtsPointMaterial, 
-      CubeComponent, NgtArgs
+      NgtsPointsBuffer, NgtsPointMaterial
    ],
 })
 export class StarsComponent {
    protected readonly Math = Math;
 
-   private store = injectStore();
-   protected camera = this.store.select('camera');
-   protected glDomElement = this.store.select('gl', 'domElement');
-   
 	sphere = random.inSphere(new Float32Array(5000), { radius: 1.5 }) as Float32Array;
    position = input<Float32Array>(this.sphere);
    rotation = input<NgtVector3>([0, 0, Math.PI / 4]);

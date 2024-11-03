@@ -10,7 +10,6 @@ import { NgtsPointMaterial } from 'angular-three-soba/materials';
 
 extend({ Mesh, MeshStandardMaterial, BoxGeometry, AmbientLight, PointLight, SpotLight });
 extend({ OrbitControls });
-extend({ NgtsPointsBuffer });
 
 @Component({
     standalone: true,

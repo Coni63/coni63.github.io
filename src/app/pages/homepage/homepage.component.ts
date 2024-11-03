@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-// import { SceneGraph } from '../../components/scene/scene.component';
 import { NgtCanvas } from 'angular-three';
-import { StarsComponent } from '../../components/stars/stars.component';
+import { SceneGraph } from '../../components/scene/scene.component';
+// import { StarsComponent } from '../../components/stars/stars.component';
+import { Scene } from 'three';
 
 @Component({
   selector: 'app-homepage',
@@ -13,5 +14,5 @@ import { StarsComponent } from '../../components/stars/stars.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomepageComponent {
-  readonly sceneGraph = StarsComponent;
+  readonly sceneGraph = SceneGraph;
 }
