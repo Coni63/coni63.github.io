@@ -1,9 +1,22 @@
-import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, input, ViewChild } from '@angular/core';
-import { injectBeforeRender } from 'angular-three';
-import { NgtsPointMaterial } from 'angular-three-soba/materials';
-import { NgtsPointsBuffer } from 'angular-three-soba/performances';
+import { ChangeDetectionStrategy, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, input, signal, viewChild, ViewChild } from '@angular/core';
+import { injectBeforeRender, injectStore, NgtVector3 } from 'angular-three';
+// import { NgtsPointMaterial } from 'angular-three-soba/materials';
+// import { NgtsPointsBuffer } from 'angular-three-soba/performances';
 import { random } from 'maath';
+// import { CubeComponent } from '../cube/cube.component';
 
+import { AmbientLight, BoxGeometry, Mesh, MeshStandardMaterial, PointLight, SpotLight } from 'three';
+import { extend, NgtArgs } from 'angular-three';
+import { OrbitControls } from 'three-stdlib';
+import { NgtsPointsBuffer } from 'angular-three-soba/performances';
+
+import { CubeComponent } from '../cube/cube.component';
+import { NgtsPointMaterial } from 'angular-three-soba/materials';
+
+
+extend({ Mesh, MeshStandardMaterial, BoxGeometry, AmbientLight, PointLight, SpotLight });
+// extend({ OrbitControls });
+// extend({ NgtsPointsBuffer });
 
 @Component({
    selector: 'app-stars',
@@ -12,24 +25,29 @@ import { random } from 'maath';
    styleUrl: './stars.component.scss',
    schemas: [CUSTOM_ELEMENTS_SCHEMA],
    changeDetection: ChangeDetectionStrategy.OnPush,
-   imports: [NgtsPointsBuffer, NgtsPointMaterial],
+   imports: [
+      NgtsPointsBuffer, NgtsPointMaterial, 
+      CubeComponent, NgtArgs
+   ],
 })
 export class StarsComponent {
    protected readonly Math = Math;
 
-   protected readonly sphere = random.inSphere(new Float32Array(3000), { radius: 1.5 }) as Float32Array;
+   private store = injectStore();
+   protected camera = this.store.select('camera');
+   protected glDomElement = this.store.select('gl', 'domElement');
+   
+	sphere = random.inSphere(new Float32Array(5000), { radius: 1.5 }) as Float32Array;
    position = input<Float32Array>(this.sphere);
+   rotation = input<NgtVector3>([0, 0, Math.PI / 4]);
 
-   @ViewChild(NgtsPointsBuffer) private pointsBufferRef!: NgtsPointsBuffer;
+	private pointsBufferRef = viewChild.required(NgtsPointsBuffer);
 
 	constructor() {
 		injectBeforeRender(({ delta }) => {
-			const points = this.pointsBufferRef?.pointsRef().nativeElement;
-
-			if (points) {
-				points.rotation.x -= delta / 10;
-				points.rotation.y -= delta / 15;
-			}
-      	});
+			const points = this.pointsBufferRef().pointsRef().nativeElement;
+			points.rotation.x -= delta / 10;
+			points.rotation.y -= delta / 15;
+		});
 	}
 }

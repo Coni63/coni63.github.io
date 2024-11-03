@@ -1,9 +1,8 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, Input, viewChild, signal, input } from '@angular/core';
-import { extend, injectBeforeRender, NgtVector3 } from 'angular-three';
-import { AmbientLight, BoxGeometry, Mesh, MeshStandardMaterial, PointLight } from 'three';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, viewChild, signal, input, ChangeDetectionStrategy } from '@angular/core';
+import { extend, NgtVector3 } from 'angular-three';
+import { BoxGeometry, Mesh, MeshStandardMaterial } from 'three';
 
 extend({ Mesh, MeshStandardMaterial, BoxGeometry });
-// extend({ Mesh, MeshStandardMaterial, BoxGeometry, AmbientLight, PointLight });
 
 @Component({
     selector: 'app-cube',
@@ -11,6 +10,7 @@ extend({ Mesh, MeshStandardMaterial, BoxGeometry });
     templateUrl: './cube.component.html',
     styleUrl: './cube.component.scss',
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CubeComponent {
     position = input<NgtVector3>([0, 0, 0]);
