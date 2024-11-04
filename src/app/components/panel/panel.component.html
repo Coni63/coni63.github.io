@@ -1,0 +1,12 @@
+<ngt-color attach="background" *args="['#f78b3d']" />
+
+<ngt-mesh>
+    <ngt-box-geometry *args="[1.5, 0.4, 0.001]" />
+    <ngt-mesh-toon-material color="#fbb03b" />
+
+    <ngts-html [options]="{ occlude: true, transform: true, position: [0, 0, 0.3] }">
+        <div [ngtsHTMLContent]="{ distanceFactor: 0 }">
+            <app-chart-container />
+        </div>
+    </ngts-html>
+</ngt-mesh>

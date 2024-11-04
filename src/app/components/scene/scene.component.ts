@@ -7,6 +7,7 @@ import { NgtsPointsBuffer } from 'angular-three-soba/performances';
 import { StarsComponent } from '../stars/stars.component';
 import { CubeComponent } from '../cube/cube.component';
 import { NgtsPointMaterial } from 'angular-three-soba/materials';
+import { PanelComponent } from '../panel/panel.component';
 
 extend({ Mesh, MeshStandardMaterial, BoxGeometry, AmbientLight, PointLight, SpotLight });
 extend({ OrbitControls });
@@ -18,6 +19,7 @@ extend({ OrbitControls });
     imports: [ 
         CubeComponent, 
         StarsComponent, 
+        PanelComponent,
         NgtArgs
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
